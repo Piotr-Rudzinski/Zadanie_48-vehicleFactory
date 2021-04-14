@@ -8,21 +8,21 @@ public class App {
     public static void main( String[] args ) {
         VehicleFactory vehicleFactory = new VehicleFactory();
 
-        Vehicle vehicle = generateRandomVehicleType();
+        String vehicleName = generateRandomVehicleType();
 
-        List<Vehicle> list = vehicleFactory.createVehicles(vehicle, generateVehicleAmount());
+        List<Vehicle> list = vehicleFactory.createVehicles(vehicleName, generateVehicleAmount());
 
-        System.out.println("Zamawiane obiekty: " + vehicle.getClass().getSimpleName());
+        System.out.println("Zamawiane obiekty: " + vehicleName);
         System.out.println();
         System.out.println("Klasa pierwszego obiektu w kolekcji: " + list.get(0).getClass().getSimpleName());
         System.out.println("Klasa ostatniego obiektu w kolekcji: " + list.get(list.size()-1).getClass().getSimpleName());
         System.out.println("Liczba obiektów w kolekcji: " + list.size());
     }
 
-    private static Vehicle generateRandomVehicleType() {
+    private static String generateRandomVehicleType() {
         Random random = new Random();
-        Vehicle[] vehicleType = {new Car("car"), new Boat("boat"), new Truck("truck"), new Motorcycle("motorcycle")};
-        return vehicleType[random.nextInt(vehicleType.length)];
+        String[] vehicleClassName = {"Car", "Boat", "Truck", "Motorcycle"};
+        return vehicleClassName[random.nextInt(vehicleClassName.length)];
     }
 
     private static Integer generateVehicleAmount() {

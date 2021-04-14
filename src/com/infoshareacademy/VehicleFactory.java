@@ -7,25 +7,25 @@ import java.util.Random;
 public class VehicleFactory {
     private final Random random = new Random();
 
-    public List<Vehicle> createVehicles(Vehicle vehicle, Integer amount) {
+    public List<Vehicle> createVehicles(String vehicleClassName, Integer amount) {
         List<Vehicle> vehicles = new ArrayList<>();
         for (int i = 0; i < amount; i++) {
-            vehicles.add(createVehicle(vehicle));
+            vehicles.add(createVehicle(vehicleClassName));
         }
         return vehicles;
     }
 
-    public Vehicle createVehicle(Vehicle vehicle) {
-        Class c = vehicle.getClass();
-        String s = c.getName();
+    public Vehicle createVehicle(String vehicleClassName) {
+/*        Class c = vehicle.getClass();
+        String s = c.getName();*/
 
-        if (s.equals("com.infoshareacademy.Car")) {
+        if (vehicleClassName.equals("Car")) {
             return (Car) createCar();
-        } else if (s.equals("com.infoshareacademy.Boat")) {
+        } else if (vehicleClassName.equals("Boat")) {
             return (Boat) createBoat();
-        } else if (s.equals("com.infoshareacademy.Truck")) {
+        } else if (vehicleClassName.equals("Truck")) {
             return (Truck) createTruck();
-        } else if (s.equals("com.infoshareacademy.Motorcycle")) {
+        } else if (vehicleClassName.equals("Motorcycle")) {
             return (Motorcycle) createMotorcycle();
         }
         return null;
